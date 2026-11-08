@@ -6,20 +6,25 @@ Built for the Gnani.ai *Great Indian AI Internship Challenge*. The idea: many In
 calls, WhatsApp voice notes and SMS in **Telugu**, and most scam checkers only read English text.
 CyberShield is **voice-first**: a recording goes in, a spoken warning in the speaker's language comes out.
 
+## Screenshots
+
+Real screenshots from a local run on the author's laptop (one Telugu test clip; they illustrate the flow and are not a measure of accuracy).
+
 <p align="center">
-  <img src="docs/screenshots/voice-flow-preview.png" width="640" alt="Voice scan result"><br>
-  <em>Voice scan result. Screenshot from a local run on the author's laptop.</em>
+  <img src="docs/screenshots/voice-flow-preview.png" width="720" alt="Voice scan result with the pipeline strip showing stage times"><br>
+  <em><b>1. Voice scan result.</b> Voice scan of a recorded Telugu test clip: real Gnani Prisma transcript and rule verdict. The pipeline shows measured stage times from this single run (Prisma 23.1 s, Timbre 32.1 s). Gemini's 1 ms is a cache hit from an earlier real Gemini call, not a live API call.</em>
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/gemini-security-insights.png" width="640" alt="Gemini security insights"><br>
-  <em>Gemini security insights for the same scan.</em>
+  <img src="docs/screenshots/gemini-security-insights.png" width="720" alt="Gemini security insights panel"><br>
+  <em><b>2. Gemini insights.</b> Gemini security insights for the same Telugu message, identifying an OTP scam with 95% confidence. This result was served from the local cache of an earlier real Gemini call.</em>
 </p>
 
 <p align="center">
-  <img src="docs/screenshots/voice-warning-toolkit.png" width="640" alt="Voice warning and safety toolkit"><br>
-  <em>Voice warning and safety toolkit. All three screenshots are real local test runs (not mocked); they show one test message, not a measure of accuracy.</em>
+  <img src="docs/screenshots/voice-warning-toolkit.png" width="720" alt="Telugu voice warning and safety toolkit"><br>
+  <em><b>3. Voice warning and toolkit.</b> Telugu voice safety warning generated using Gnani Timbre, alongside CyberShield's safety toolkit and recommendations.</em>
 </p>
+
 ## How Gnani AI is used (core of the product, not an add-on)
 
 | Step | Gnani product | What it does here |
