@@ -1,0 +1,81 @@
+FRESH-MESSAGE BENCHMARK (research/raw_messages.txt)
+
+Scam = MEDIUM or HIGH, genuine = LOW. Contributor labels used as given.
+
+LIMITATIONS
+- 30 messages from 5 contributors; far too small to prove production-level accuracy.
+- Mostly English. Only 1 Tenglish message and no Telugu-script messages: this is NOT a Telugu test.
+- Labels were supplied by the contributors and are not independently verified.
+- Several messages look like real SMS pasted with personal details masked, not freshly invented.
+- Links were replaced by [LINK REDACTED]; links are a strong scam signal, so scam messages are harder here than originally.
+- Four labels are debatable (promotions / ambiguous alerts); results are shown with and without them.
+- The detector was NOT changed after seeing these results.
+
+CODE VERSION
+- backend/services/threat_engine.py: matches the pre-fix baseline
+- backend/services/gemini_service.py: matches the pre-fix baseline
+
+== RULES ONLY ==
+All messages (n=30): precision 100.0%, recall 53.3%, F1 69.6%, false-positive rate 0.0%  [TP 8 FN 7 FP 0 TN 15]
+Excluding the 4 debatable (n=26): precision 100.0%, recall 66.7%, F1 80.0%, false-positive rate 0.0%  [TP 8 FN 4 FP 0 TN 14]
+
+Wrong verdicts (7):
+  C2 SCAM #1: MISSED SCAM -> LOW 0 [debatable label]
+     Dear A/C:[MASKED] received Rs.10655 on 11/9/2026. New Bal:Rs.31040. View full stmt: [LINK REDACTED] NSEBOUGHTTradeExecutedVERTEX
+  C2 SCAM #2: MISSED SCAM -> LOW 0 [debatable label]
+     Congratulations, Your personal loan of upto Rs 25 Lacs can be pre-approved. Check Now
+  C2 SCAM #3: MISSED SCAM -> LOW 0 [debatable label]
+     Goodbye GST! Pay 0% GST on Star Health Insurance & save more on your premium. Check now!
+  C3 SCAM #1: MISSED SCAM -> LOW 0
+     Play and win [LINK REDACTED] Click the link above toplsy and win more cash prize
+  C3 SCAM #2: MISSED SCAM -> LOW 0
+     Hello there,this is offer for only you ,as a user of this brand you claimed an 100% off on two products [LINK REDACTED] Click here
+  C3 SCAM #3: MISSED SCAM -> LOW 0
+     Check your bank account, dear user you have free subscription to signin ,so money has refunded
+  C5 SCAM #1: MISSED SCAM -> LOW 15
+     Congratulations!! You have won a ₹25,00,000 lottery. Click this link to claim your prize immediately
+
+== RULES + GEMINI ==
+Gemini answered 30 of 30 messages.
+All messages (n=30): precision 88.2%, recall 100.0%, F1 93.8%, false-positive rate 13.3%  [TP 15 FN 0 FP 2 TN 13]
+Excluding the 4 debatable (n=26): precision 92.3%, recall 100.0%, F1 96.0%, false-positive rate 7.1%  [TP 12 FN 0 FP 1 TN 13]
+
+Wrong verdicts (2):
+  C1 GENUINE #2: FALSE ALARM -> MEDIUM 45 [debatable label]
+     your account has debited 500/- if you do not make this payment please contact the bank immediately.
+  C5 GENUINE #1: FALSE ALARM -> MEDIUM 55
+     Dear UPI user A/C [MASKED] debited by 30.0 on date 20Jul25 trf to Google Play rech Refno [MASKED]. If not u? call [NUMBER MASKED]. -SBI
+
+PER-MESSAGE VERDICTS
+C1 SCAM    #1: rules HIGH 70 | rules+Gemini HIGH 70 [Gemini: answered, confidence 95%]
+C1 SCAM    #2: rules MEDIUM 35 | rules+Gemini HIGH 70 [Gemini: answered, confidence 95%]
+C1 SCAM    #3: rules HIGH 75 | rules+Gemini HIGH 75 [Gemini: answered, confidence 95%]
+C1 GENUINE #1: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C1 GENUINE #2: rules LOW 0 | rules+Gemini MEDIUM 45 [Gemini: answered, confidence 75%]
+C1 GENUINE #3: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C2 SCAM    #1: rules LOW 0 | rules+Gemini MEDIUM 45 [Gemini: answered, confidence 75%]
+C2 SCAM    #2: rules LOW 0 | rules+Gemini MEDIUM 45 [Gemini: answered, confidence 75%]
+C2 SCAM    #3: rules LOW 0 | rules+Gemini MEDIUM 35 [Gemini: answered, confidence 65%]
+C2 GENUINE #1: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C2 GENUINE #2: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C2 GENUINE #3: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 45%]
+C3 SCAM    #1: rules LOW 0 | rules+Gemini MEDIUM 55 [Gemini: answered, confidence 90%]
+C3 SCAM    #2: rules LOW 0 | rules+Gemini MEDIUM 55 [Gemini: answered, confidence 90%]
+C3 SCAM    #3: rules LOW 0 | rules+Gemini MEDIUM 55 [Gemini: answered, confidence 90%]
+C3 GENUINE #1: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C3 GENUINE #2: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C3 GENUINE #3: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C4 SCAM    #1: rules MEDIUM 55 | rules+Gemini HIGH 70 [Gemini: answered, confidence 95%]
+C4 SCAM    #2: rules HIGH 85 | rules+Gemini HIGH 85 [Gemini: answered, confidence 98%]
+C4 SCAM    #3: rules HIGH 75 | rules+Gemini HIGH 75 [Gemini: answered, confidence 95%]
+C4 GENUINE #1: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C4 GENUINE #2: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C4 GENUINE #3: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C5 SCAM    #1: rules LOW 15 | rules+Gemini MEDIUM 55 [Gemini: answered, confidence 95%]
+C5 SCAM    #2: rules MEDIUM 55 | rules+Gemini HIGH 70 [Gemini: answered, confidence 95%]
+C5 SCAM    #3: rules MEDIUM 35 | rules+Gemini HIGH 70 [Gemini: answered, confidence 95%]
+C5 GENUINE #1: rules LOW 0 | rules+Gemini MEDIUM 55 [Gemini: answered, confidence 90%]
+C5 GENUINE #2: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+C5 GENUINE #3: rules LOW 0 | rules+Gemini LOW 0 [Gemini: answered, confidence 5%]
+
+These numbers describe this small set only. They are not a production accuracy claim.
