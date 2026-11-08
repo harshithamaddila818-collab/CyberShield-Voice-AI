@@ -3,3 +3,12 @@
 __pycache__/
 *.pyc
 *.db
+
+# Personal voice recordings (not published)
+tests/audio/*.ogg
+tests/audio/*.wav
+tests/audio/*.m4a
+tests/audio/*.mp3
+
+# Generated benchmark output (WER figures not valid; results are summarised in README)
+tests/voice_results.md
