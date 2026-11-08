@@ -1,0 +1,21 @@
+id,expected,language,reference
+v01,scam,te,మీ బ్యాంక్ ఖాతా ఈరోజు రాత్రి బ్లాక్ అవుతుంది. వెంటనే మీకు వచ్చిన ఓటిపి మాకు చెప్పండి.
+v02,scam,te,మీరు ఇంటి నుండి పని చేసి రోజుకు ఐదు వేలు సంపాదించవచ్చు. ముందుగా రెండు వేల రూపాయలు రిజిస్ట్రేషన్ ఫీజు కట్టండి.
+v03,scam,te,మేము సైబర్ క్రైమ్ పోలీసులం. మీ ఆధార్ కార్డ్ తో కేసు నమోదైంది. అరెస్ట్ కాకూడదంటే వెంటనే డబ్బులు పంపండి.
+v04,scam,te,మీ కరెంట్ బిల్లు పెండింగ్ ఉంది. ఈ రాత్రి కరెంట్ కట్ చేస్తారు. ఈ లింక్ లో వెంటనే చెల్లించండి.
+v05,scam,te,మీకు లాటరీ తగిలింది. పది లక్షలు గెలుచుకున్నారు. బహుమతి పొందడానికి ఐదు వేలు ఫీజు చెల్లించండి.
+v06,scam,en,This is your bank. Your account will be frozen today. Please tell me the OTP you just received to verify your identity.
+v07,scam,en,Your KYC has expired. Update it immediately using this link or your account will be suspended.
+v08,scam,en,You are under digital arrest. Do not disconnect this video call and do not tell anyone. Transfer the money now.
+v09,scam,en,Congratulations, you won a lottery of ten lakh rupees. Pay a small processing fee to claim your prize today.
+v10,scam,en,We are offering a work from home job. First pay one thousand rupees to activate your account and start earning daily.
+v11,genuine,te,నమస్తే, రేపు సాయంత్రం ఆరు గంటలకు ఇంటికి వస్తున్నాను. ఏమైనా తీసుకురావాలా?
+v12,genuine,te,మీ ఓటిపి నాలుగు ఎనిమిది రెండు తొమ్మిది ఒకటి. ఈ కోడ్ ని ఎవరికీ చెప్పవద్దు.
+v13,genuine,te,మీ పార్శిల్ ఈ రోజు డెలివరీ అయింది. కొనుగోలు చేసినందుకు ధన్యవాదాలు.
+v14,genuine,te,మీ విద్యుత్ బిల్లు చెల్లించినందుకు ధన్యవాదాలు. రసీదు మీ ఫోన్ కి పంపబడింది.
+v15,genuine,te,రేపు ఉదయం పది గంటలకు డాక్టర్ గారితో మీ అపాయింట్మెంట్ ఉంది. దయచేసి సమయానికి రండి.
+v16,genuine,en,Your one time password is four eight two nine one. Do not share this code with anyone.
+v17,genuine,en,Your KYC update was successful. Thank you for banking with us. No further action is needed.
+v18,genuine,en,Hi, are we still meeting for lunch tomorrow at one o clock?
+v19,genuine,en,Your order has been delivered. Please rate your experience in the app.
+v20,genuine,en,Reminder that your electricity bill is due on the fifteenth. You can pay it on the official app.

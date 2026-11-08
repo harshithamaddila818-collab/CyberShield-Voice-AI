@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08111f">
+    <title>CyberShield Voice AI | Digital Safety</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="shell">
+
+    <header class="topbar">
+        <a class="brand" href="#">
+            <span class="brand-icon">🛡️</span>
+            <span>
+                <strong>CyberShield</strong>
+                <small>VOICE AI</small>
+            </span>
+        </a>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            AI SAFETY ASSISTANT
+        </div>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="eyebrow">YOUR DIGITAL SAFETY PARTNER</div>
+
+            <h1>
+                Before you click,<br>
+                <span>let AI protect you.</span>
+            </h1>
+
+            <p>
+                Detect phishing, fraudulent messages and suspicious calls
+                using AI-powered Telugu and English voice analysis.
+            </p>
+
+            <div class="hero-tags">
+                <span>✦ Gnani Prisma STT</span>
+                <span>✦ Gnani Timbre TTS</span>
+                <span>✦ Gemini AI Analysis</span>
+            </div>
+        </section>
+
+        <!-- VOICE ANALYZER -->
+        <section class="panel analyzer">
+
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">VOICE INTELLIGENCE</div>
+                    <h2>Analyze suspicious audio</h2>
+                    <p>Upload a recording or use your microphone.</p>
+                </div>
+                <span class="pill">PRISMA AI</span>
+            </div>
+
+            <div class="record-card">
+                <div class="mic-icon">🎙️</div>
+
+                <h3>Record a voice message</h3>
+
+                <p>
+                    Speak naturally in Telugu or English.
+                    Maximum recording duration: 30 seconds.
+                </p>
+
+                <button id="recordButton" class="record-button">
+                    <span>●</span> Start Recording
+                </button>
+
+                <div id="recordStatus" class="record-status">
+                    Microphone is ready
+                </div>
+
+                <div id="recordTimer" class="record-timer">
+                    00:00
+                </div>
+            </div>
+
+            <div class="separator">
+                <span>OR UPLOAD AUDIO</span>
+            </div>
+
+            <label class="dropzone" for="audioFile">
+                <span class="upload-icon">📁</span>
+                <strong>Choose an audio file</strong>
+                <small>WAV, MP3, OGG, FLAC, AAC or M4A</small>
+
+                <input
+                    id="audioFile"
+                    type="file"
+                    accept=".wav,.mp3,.ogg,.flac,.aac,.m4a,audio/*"
+                >
+
+                <small id="fileName">No file selected</small>
+            </label>
+
+            <div class="controls">
+                <select id="language">
+                    <option value="indic-auto">Auto Detect Language</option>
+                    <option value="te-IN">Telugu</option>
+                    <option value="en-IN">English</option>
+                </select>
+
+                <button id="analyzeAudio" class="primary">
+                    Analyze Audio →
+                </button>
+            </div>
+
+        </section>
+
+        <!-- TEXT ANALYZER -->
+        <section class="panel">
+
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">MESSAGE INTELLIGENCE</div>
+                    <h2>Scan a suspicious message</h2>
+                    <p>Check SMS, WhatsApp messages and suspicious links.</p>
+                </div>
+                <span class="pill">TEXT SCAN</span>
+            </div>
+
+            <textarea
+                id="messageText"
+                placeholder="Paste your suspicious message here..."
+            ></textarea>
+
+            <button type="button" id="analyzeText" class="primary">
+                🛡️ Scan Message
+            </button>
+
+        </section>
+
+        <!-- LOADING -->
+        <div id="loading" class="loading hidden">
+            <div class="loader"></div>
+            <strong>Analyzing your message...</strong>
+            <p>Checking suspicious patterns with CyberShield AI.</p>
+        </div>
+
+        <!-- ERROR -->
+        <div id="error" class="error hidden"></div>
+
+        <!-- RESULTS -->
+        <section id="results" class="results hidden">
+
+            <div class="result-head">
+                <div>
+                    <div class="eyebrow">CYBERSHIELD REPORT</div>
+                    <h2>Security Assessment</h2>
+                </div>
+
+                <span id="riskBadge" class="risk-badge">LOW</span>
+            </div>
+
+            <!-- RULE-BASED RISK -->
+            <div class="score-card">
+                <div class="score-info">
+                    <small>THREAT RISK SCORE</small>
+
+                    <div class="score">
+                        <span id="score">0</span>
+                        <small>/100</small>
+                    </div>
+
+                    <p>Based on detected scam indicators</p>
+                </div>
+
+                <div class="meter">
+                    <div id="meterFill"></div>
+                </div>
+            </div>
+
+            <!-- TRANSCRIPT -->
+            <div class="result-block">
+                <h3>📝 Detected Transcript / Message</h3>
+                <p id="transcript"></p>
+            </div>
+
+            <!-- VOICE PIPELINE (Gnani Prisma -> rules + Gemini -> Gnani Timbre) -->
+            <div id="pipelineCard" class="result-block pipeline-card hidden">
+                <h3>⚡ How this result was produced</h3>
+                <ol id="pipelineSteps" class="pipeline"></ol>
+            </div>
+
+            <!-- THREAT INDICATORS -->
+            <div class="result-block">
+                <h3>🚨 Threat Indicators</h3>
+                <ul id="signals"></ul>
+            </div>
+
+            <!-- URL CHECK -->
+            <div class="result-block">
+                <h3>🔗 URL Security Check</h3>
+                <ul id="urls"></ul>
+            </div>
+
+            <!-- RULE RECOMMENDATIONS -->
+            <div class="result-block">
+                <h3>🛡️ Safety Recommendations</h3>
+                <ul id="recommendations"></ul>
+            </div>
+
+            <!-- GEMINI AI INSIGHTS -->
+            <div class="result-block ai-insights">
+
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">GEMINI INTELLIGENCE</div>
+                        <h3>🤖 AI Security Insights</h3>
+                    </div>
+
+                    <span id="aiStatus" class="pill">
+                        AI ANALYSIS
+                    </span>
+                </div>
+
+                <div class="ai-detail">
+                    <small>DETECTED THREAT TYPE</small>
+                    <p id="aiThreatType">Waiting for analysis...</p>
+                </div>
+
+                <div class="ai-detail">
+                    <small>MESSAGE LANGUAGE</small>
+                    <p id="aiLanguage">-</p>
+                </div>
+
+                <div class="ai-detail">
+                    <small>AI CONFIDENCE</small>
+                    <p id="aiConfidence">Not available</p>
+                </div>
+
+                <div class="ai-detail">
+                    <small>AI EXPLANATION</small>
+                    <p id="aiExplanation">
+                        Gemini analysis will appear here.
+                    </p>
+                </div>
+
+                <div class="ai-detail">
+                    <small>AI RECOMMENDED ACTION</small>
+                    <p id="aiRecommendation">
+                        Recommendations will appear here.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- VOICE WARNING -->
+            <div class="voice-warning">
+
+                <div>
+                    <h3>🔊 Voice Safety Warning</h3>
+                    <p>Listen to your personalized safety advice.</p>
+                </div>
+
+                <select id="warningLanguage">
+                    <option value="en-IN">English Voice</option>
+                    <option value="te-IN">Telugu Voice</option>
+                </select>
+
+                <button id="speakWarning" class="primary">
+                    Generate Voice Warning
+                </button>
+
+                <audio
+                    id="warningAudio"
+                    controls
+                    class="audio-player hidden"
+                ></audio>
+
+            </div>
+
+            <p class="disclaimer" id="disclaimer"></p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <strong>CyberShield Voice AI</strong>
+        <p>Before You Click, Let CyberShield Check.</p>
+        <small>Built with Gnani AI · Gemini AI · Prisma · Timbre</small>
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+<script src="features.js?v=2"></script>
+</body>
+</html>

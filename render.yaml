@@ -1,0 +1,24 @@
+# Render.com blueprint: one web service serves the API and the web page (/app/).
+# Deploy: push the repo to GitHub -> Render "New +" -> Blueprint -> pick the repo.
+# Then open Environment and paste your two keys (they are never stored in the repo).
+services:
+  - type: web
+    name: cybershield-voice-ai
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: GNANI_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: GEMINI_FALLBACK_MODELS
+        value: gemini-2.5-flash
+      - key: RATE_LIMIT_PER_MIN
+        value: "20"
