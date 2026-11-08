@@ -12,3 +12,10 @@ tests/audio/*.mp3
 
 # Generated benchmark output (WER figures not valid; results are summarised in README)
 tests/voice_results.md
+
+# Local debugging leftovers (not part of the submission)
+check_otp.py
+diag_*.py
+settings.json
+backend/requirements.txt
+backend/tests/
