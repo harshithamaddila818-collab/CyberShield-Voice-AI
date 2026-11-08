@@ -7,10 +7,19 @@ calls, WhatsApp voice notes and SMS in **Telugu**, and most scam checkers only r
 CyberShield is **voice-first**: a recording goes in, a spoken warning in the speaker's language comes out.
 
 <p align="center">
-  <img src="docs/screenshots/voice-flow-preview.png" width="640" alt="Voice scan result with pipeline strip"><br>
-  <em>UI capture from a local test run (Gnani and Gemini calls were stubbed for the capture, so the timings shown are not real).</em>
+  <img src="docs/screenshots/voice-flow-preview.png" width="640" alt="Voice scan result"><br>
+  <em>Voice scan result. Screenshot from a local run on the author's laptop.</em>
 </p>
 
+<p align="center">
+  <img src="docs/screenshots/gemini-security-insights.png" width="640" alt="Gemini security insights"><br>
+  <em>Gemini security insights for the same scan.</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/voice-warning-toolkit.png" width="640" alt="Voice warning and safety toolkit"><br>
+  <em>Voice warning and safety toolkit. All three screenshots are real local test runs (not mocked); they show one test message, not a measure of accuracy.</em>
+</p>
 ## How Gnani AI is used (core of the product, not an add-on)
 
 | Step | Gnani product | What it does here |
